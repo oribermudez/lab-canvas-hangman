@@ -1,7 +1,7 @@
 var hangman;
 
  function Hangman() {
-  this.words = ["uno","dos","seis"];
+  this.words = ["uno","dos","tres"];
   this.secretWord = "";
   this.letters = [];
   this.guessedLetter = "";
@@ -60,7 +60,7 @@ document.getElementById('start-game-button').onclick = function () {
   hangmanCanvas = new HangmanCanvas(hangman.secretWord);
   hangmanCanvas.createBoard();
   hangmanCanvas.drawLines();
-  console.log(hangmanCanvas)
+  console.log(hangmanCanvas);
 };
 
 
@@ -72,6 +72,7 @@ document.onkeydown = function (e) {
       if (hangman.secretWord.indexOf(upper)!==-1){
         hangmanCanvas.writeCorrectLetter(hangman.secretWord.indexOf(upper));
         hangman.addCorrectLetter(hangman.secretWord.indexOf(upper));
+        if(hangman.checkWinner()){hangmanCanvas.winner();}
       } else {
         hangman.addWrongLetter();
         hangmanCanvas.writeWrongLetter(upper, hangman.errorsLeft);
