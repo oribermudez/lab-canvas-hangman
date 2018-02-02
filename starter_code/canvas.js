@@ -31,9 +31,9 @@ HangmanCanvas.prototype.writeCorrectLetter = function (index) {
     var x = 760;
     for(var i = 0; i < this.secretWord.length; i++){
       if (this.secretWord[i] === letter){
-      this.ctx.strokeText(letter, 90*i+x, 190);
+      this.ctx.strokeText(letter, 90 * i + x, 190);
       this.ctx.fillStyle = "#9DA400";
-      this.ctx.fillText(letter, 90*i+x, 190);
+      this.ctx.fillText(letter, 90 * i + x, 190);
       }
     }
     
@@ -44,7 +44,7 @@ HangmanCanvas.prototype.writeWrongLetter = function (letter, errorsLeft) {
   this.ctx.strokeStyle = "black";
   this.ctx.font = "60px arial"
   this.ctx.fillStyle = "#9DA400";
-  this.usedLetters+=letter+" ";
+  this.usedLetters += letter+" ";
   this.ctx.fillText(this.usedLetters, 520, 50);
   this.drawHangman(errorsLeft);
 };
@@ -131,9 +131,17 @@ HangmanCanvas.prototype.drawHangman = function (shape) {
 };
 
 HangmanCanvas.prototype.gameOver = function () {
-  
+  this.ctx.lineWidth = 4;
+  this.ctx.strokeStyle = "black";
+  this.ctx.font = "100px arial"
+  this.ctx.fillStyle = "red";
+  this.ctx.fillText("PERDISTE", 650, 400);
 };
 
 HangmanCanvas.prototype.winner = function () {
-
+  this.ctx.lineWidth = 4;
+  this.ctx.strokeStyle = "black";
+  this.ctx.font = "100px arial"
+  this.ctx.fillStyle = "red";
+  this.ctx.fillText("GANASTE", 650, 400);
 };
